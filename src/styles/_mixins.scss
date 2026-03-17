@@ -85,3 +85,9 @@
         border-radius: 10px;
     }
 }
+
+@mixin mobile {
+    @media (max-width: $breakpoint-mobile) {
+        @content;
+    }
+}

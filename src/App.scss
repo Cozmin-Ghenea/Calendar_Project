@@ -80,6 +80,10 @@ body::before {
         background: rgba(255, 253, 245, 0.85); // Light cream blur
         backdrop-filter: blur(20px);
         padding: 0.85rem 1.5rem;
+
+        @include mobile {
+            padding: 0.85rem 1rem;
+        }
     }
 
     &__header-inner {
@@ -147,8 +151,10 @@ body::before {
         width: 100%;
         align-items: start;
 
-        @media (max-width: 768px) {
+        @include mobile {
             grid-template-columns: 1fr;
+            padding: 1rem;
+            gap: 1rem;
         }
     }
 
