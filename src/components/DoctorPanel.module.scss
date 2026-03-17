@@ -1,0 +1,237 @@
+@use '../styles' as *;
+
+.panel {
+    @include glass-card;
+    padding: 1.4rem;
+
+    &__header {
+        margin-bottom: 1.2rem;
+
+        h3 {
+            font-size: $font-size-base;
+            font-weight: 700;
+            color: $text-primary;
+            margin-bottom: 0.3rem;
+        }
+
+        .date-label {
+            font-size: $font-size-xs;
+            color: $accent-light;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+    }
+
+    &__no-date {
+        text-align: center;
+        padding: 2.5rem 1rem;
+        color: $text-muted;
+        font-size: $font-size-sm;
+        line-height: 1.7;
+
+        .icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+            opacity: 0.45;
+        }
+    }
+
+    &__doctors {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+// Doctor card
+.doctor {
+    border: 1px solid $border;
+    border-radius: $radius-md;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: border-color $transition-fast;
+    background: $bg-secondary;
+
+    &--expanded {
+        border-color: rgba(242, 124, 89, 0.4); // Warm Terracotta
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.85rem 1rem;
+        cursor: pointer;
+        transition: background $transition-fast;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.02); // Lighten hover for light theme
+        }
+    }
+
+    &__avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $font-size-xs;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+        letter-spacing: 0.02em;
+    }
+
+    &__info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__name {
+        font-size: $font-size-sm;
+        font-weight: 700;
+        color: $text-primary;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__specialty {
+        font-size: $font-size-xs;
+        color: $text-secondary;
+        margin-top: 1px;
+    }
+
+    &__meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 3px;
+        flex-shrink: 0;
+    }
+
+    &__rating {
+        font-size: $font-size-xs;
+        font-weight: 700;
+        color: #fbbf24;
+    }
+
+    &__exp {
+        font-size: 0.65rem;
+        color: $text-muted;
+        font-weight: 500;
+    }
+
+    &__chevron {
+        font-size: $font-size-xs;
+        color: $text-muted;
+        margin-left: 0.4rem;
+        transition: transform $transition-fast;
+        flex-shrink: 0;
+
+        &--open {
+            transform: rotate(180deg);
+        }
+    }
+
+    // Slots section
+    &__slots {
+        padding: 0 1rem 1rem;
+        border-top: 1px solid $border;
+        background: rgba(255, 253, 245, 0.5); // Soft cream for slot bg instead of dark
+    }
+
+    &__slots-label {
+        font-size: $font-size-xs;
+        font-weight: 600;
+        color: $text-muted;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 0.75rem 0 0.6rem;
+        display: block;
+    }
+
+    &__slots-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+
+    &__slot {
+        padding: 6px 4px;
+        border-radius: $radius-sm;
+        border: 1px solid $border;
+        font-size: 0.68rem;
+        font-weight: 600;
+        font-family: $font-main;
+        text-align: center;
+        cursor: pointer;
+        transition: all $transition-fast;
+        color: $text-secondary;
+        background: $bg-input;
+        line-height: 1.3;
+
+        &:hover:not(&--busy):not(&--booked) {
+            border-color: $accent;
+            color: $accent-light;
+            background: rgba(242, 124, 89, 0.12);
+        }
+
+        &--busy {
+            background: rgba(248, 113, 113, 0.07);
+            border-color: rgba(248, 113, 113, 0.2);
+            color: rgba(248, 113, 113, 0.5);
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        &--booked {
+            background: rgba(74, 222, 128, 0.1);
+            border-color: rgba(74, 222, 128, 0.35);
+            color: $success;
+            cursor: not-allowed;
+        }
+
+        &--selected {
+            background: linear-gradient(135deg, rgba(242, 124, 89, 0.3), rgba(251, 169, 142, 0.2));
+            border-color: $accent;
+            color: $accent-light;
+            box-shadow: 0 0 10px rgba(242, 124, 89, 0.2);
+        }
+    }
+
+    &__slot-time {
+        display: block;
+    }
+
+    &__confirm {
+        margin-top: 0.85rem;
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+    }
+
+    &__btn-book {
+        @include btn-primary;
+        font-size: 0.78rem;
+        padding: 0.5rem 1.1rem;
+    }
+
+    &__btn-cancel {
+        background: $bg-input;
+        border: 1px solid $border;
+        border-radius: $radius-sm;
+        padding: 0.5rem 0.9rem;
+        font-family: $font-main;
+        font-size: 0.78rem;
+        color: $text-secondary;
+        cursor: pointer;
+        transition: all $transition-fast;
+
+        &:hover {
+            background: $bg-secondary;
+            color: $text-primary;
+        }
+    }
+}

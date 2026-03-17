@@ -1,0 +1,87 @@
+@use 'variables' as *;
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin glass-card {
+    background: $bg-card;
+    border: 1px solid $border;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-card;
+    backdrop-filter: blur(10px);
+}
+
+@mixin input-base {
+    background: $bg-input;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    color: $text-primary;
+    font-family: $font-main;
+    font-size: $font-size-sm;
+    padding: 0.6rem 0.85rem;
+    outline: none;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:focus {
+        border-color: $accent;
+        box-shadow: 0 0 0 3px $accent-glow;
+    }
+
+    &::placeholder {
+        color: $text-muted;
+    }
+}
+
+@mixin btn-primary {
+    background: linear-gradient(135deg, $accent, $accent-light);
+    color: #fff;
+    border: none;
+    border-radius: $radius-sm;
+    padding: 0.65rem 1.4rem;
+    font-family: $font-main;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform $transition-fast, box-shadow $transition-fast, opacity $transition-fast;
+    letter-spacing: 0.02em;
+
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: $shadow-glow;
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+@mixin scrollbar-style {
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $text-muted;
+        border-radius: 10px;
+    }
+}

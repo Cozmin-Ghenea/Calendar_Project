@@ -1,0 +1,105 @@
+@use '../styles' as *;
+
+.form {
+    @include glass-card;
+    padding: 1.4rem;
+
+    h3 {
+        font-size: $font-size-base;
+        font-weight: 700;
+        color: $text-primary;
+        margin-bottom: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .date-badge {
+            font-size: $font-size-xs;
+            font-weight: 600;
+            color: $accent-light;
+            background: rgba(108, 99, 255, 0.15);
+            border: 1px solid $border-accent;
+            border-radius: 20px;
+            padding: 2px 10px;
+        }
+    }
+
+    &__fields {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    &__label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: $font-size-xs;
+        font-weight: 600;
+        color: $text-muted;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    &__input,
+    &__textarea,
+    &__select {
+        @include input-base;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &__textarea {
+        resize: none;
+        height: 80px;
+        line-height: 1.5;
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    &__btn-submit {
+        @include btn-primary;
+    }
+
+    &__btn-clear {
+        background: $bg-input;
+        border: 1px solid $border;
+        border-radius: $radius-sm;
+        padding: 0.65rem 1.1rem;
+        font-family: $font-main;
+        font-size: $font-size-sm;
+        color: $text-secondary;
+        cursor: pointer;
+        transition: all $transition-fast;
+
+        &:hover {
+            background: $bg-secondary;
+            color: $text-primary;
+        }
+    }
+
+    &__no-date {
+        text-align: center;
+        padding: 2rem 1rem;
+        color: $text-muted;
+        font-size: $font-size-sm;
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.5;
+        }
+    }
+}

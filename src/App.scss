@@ -1,0 +1,179 @@
+@use './styles' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: $font-main;
+    background: $bg-primary;
+    color: $text-primary;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+// Subtle grid background
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(140, 130, 115, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140, 130, 115, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.app {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    // Ambient glow blobs
+    &::before,
+    &::after {
+        content: '';
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+        opacity: 0.12;
+        z-index: 0;
+    }
+
+    &::before {
+        width: 500px;
+        height: 500px;
+        background: $accent;
+        top: -150px;
+        left: -150px;
+    }
+
+    &::after {
+        width: 400px;
+        height: 400px;
+        background: #a855f7;
+        bottom: -100px;
+        right: -100px;
+    }
+
+    // Header
+    &__header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid $border;
+        background: rgba(255, 253, 245, 0.85); // Light cream blur
+        backdrop-filter: blur(20px);
+        padding: 0.85rem 1.5rem;
+    }
+
+    &__header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 1.1rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, $text-primary 30%, $accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    &__logo-icon {
+        background: linear-gradient(135deg, $accent, $accent-light);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 1.2rem;
+    }
+
+    &__stats {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__stat {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: $font-size-xs;
+        color: $text-muted;
+
+        &--accent {
+            color: $accent-light;
+        }
+    }
+
+    &__stat-n {
+        font-weight: 700;
+        color: $text-secondary;
+    }
+
+    // Main layout
+    &__main {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 1.5rem;
+        width: 100%;
+        align-items: start;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        position: sticky;
+        top: 80px;
+    }
+
+    &__right {
+        flex: 1;
+    }
+
+    // Bottom glow
+    &__glow {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, $accent, transparent);
+        opacity: 0.3;
+        z-index: 0;
+    }
+}

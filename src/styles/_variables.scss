@@ -1,0 +1,48 @@
+// Colors
+$bg-primary: #fffdf5; // Warm off-white background
+$bg-secondary: #fefcf3; // Soft cream secondary background
+$bg-card: #ffffff; // Pure white for cards to lift them
+$bg-input: #fffafa; // Very subtle warm white for inputs
+$accent: #f27c59; // Warm Terracotta / Orange
+$accent-light: #fba98e; // Soft Peach/Orange
+$accent-glow: rgba(242, 124, 89, 0.2); // Warm glow
+$success: #34d399; // Soft green
+$danger: #f87171; // Red
+$text-primary: #3c3b38; // Dark charcoal/brown for soft contrast
+$text-secondary: #7e7972; // Soft warm grey
+$text-muted: #a6a19a; // Muted warm grey
+$border: rgba(140, 130, 115, 0.15); // Soft earthy border
+$border-accent: rgba(242, 124, 89, 0.3);
+
+// Today highlight
+$today-bg: $accent;
+$today-text: #fff;
+
+// Selected day
+$selected-bg: rgba(242, 124, 89, 0.15);
+$selected-border: $accent;
+
+// Spacing
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 18px;
+$radius-xl: 24px;
+
+// Shadows
+$shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+$shadow-input: 0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-glow: 0 0 20px $accent-glow;
+
+// Typography
+$font-main: 'Inter', sans-serif;
+$font-size-xs: 0.7rem;
+$font-size-sm: 0.85rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.15rem;
+$font-size-xl: 1.4rem;
+$font-size-2xl: 1.8rem;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-base: 0.25s ease;
+$transition-slow: 0.4s ease;

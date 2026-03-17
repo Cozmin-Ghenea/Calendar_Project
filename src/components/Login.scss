@@ -1,0 +1,135 @@
+@use '../styles' as *;
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: $bg-primary;
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.login-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.85); // Light cream/white background
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(140, 130, 115, 0.15); // Soft earthy border
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  box-shadow: 0 12px 32px rgba(140, 130, 115, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  &__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 600;
+    color: $text-primary;
+    letter-spacing: -0.02em;
+
+    &-icon {
+      color: $accent;
+      font-size: 20px;
+    }
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+    font-size: 14px;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      color: $text-secondary;
+      font-size: 13px;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+
+    input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(140, 130, 115, 0.2);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: $text-primary;
+      font-size: 15px;
+      transition: all 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $accent;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(242, 124, 89, 0.15);
+      }
+
+      &::placeholder {
+        color: rgba(60, 59, 56, 0.4);
+      }
+    }
+  }
+
+  &__button {
+    margin-top: 8px;
+    width: 100%;
+    background: $accent;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(242, 124, 89, 0.25);
+
+    &:hover {
+      background: darken($accent, 5%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(242, 124, 89, 0.35);
+    }
+
+    &:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(242, 124, 89, 0.2);
+    }
+  }
+}
